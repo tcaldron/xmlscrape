@@ -52,11 +52,11 @@ def process_sitemap(filename, namespace):
     URLsFromThisSitemap = []
 
     # Get the entire contents of each XML sitemap as a string.
-    f = open(filename, "r")
+    with open(filename, "r") as f:
 
-    # Next we use BeautifulSoup to parse the data in XML format.
-    soup = bs(f.read(), 'lxml')
-    URLs = soup.find_all("loc") # This finds everything in <loc> tags.
+        # Next we use BeautifulSoup to parse the data in XML format.
+        soup = bs(f.read(), 'lxml')
+        URLs = soup.find_all("loc") # This finds everything in <loc> tags.
 
     # If the user has opted to ignore sitemap indeces and the 
     # sitemapindex tag is detected in a file, pass over that sitemap.
@@ -86,8 +86,8 @@ def output_URLs(cleanedURLs, filename):
         # same format as plain text in this instance. So as long
         # as the user doesn't want Excel, we can just do a standard
         # file write.  
-        g = open(filename, "w+")
-        g.write("\n".join(cleanedURLs))
+        with open(filename, "w+") as g:
+            g.write("\n".join(cleanedURLs))
     else: 
         # Excel limits worksheets to 65,530 URLs. We can get around 
         # this, if necessary, by turning off string to URL conversions.
