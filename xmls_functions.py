@@ -37,19 +37,19 @@ def parse_arguments():
 
 def detect_sitemaps():
     """Checking to ensure sitemaps present, announcing number found"""
-    numberOfSitemaps = len(glob.glob('*.xml'))
-    if numberOfSitemaps == 0:
+    number_of_sitemaps = len(glob.glob('*.xml'))
+    if number_of_sitemaps == 0:
         print("""Error: No sitemaps detected in current directory. 
             Ensure that they end in .xml, and that you've navigated to 
             the correct folder.""")
         exit()
-    print(f"Detected {numberOfSitemaps} XML files in current directory.")
-    return numberOfSitemaps
+    print(f"Detected {number_of_sitemaps} XML files in current directory.")
+    return number_of_sitemaps
 
 
 def process_sitemap(filename, namespace):
     """Extracting the URLs from each sitemap and returning a list"""
-    URLsFromThisSitemap = []
+    urls_from_this_sitemap = []
 
     # Get the entire contents of each XML sitemap as a string.
     with open(filename, "r") as f:
@@ -65,21 +65,21 @@ def process_sitemap(filename, namespace):
 
     # Then we have to strip off the <loc> and </loc> tags.
     for URL in URLs:
-        URLsFromThisSitemap.append(str(URL)[5:len(URL)-7])
+        urls_from_this_sitemap.append(str(URL)[5:len(URL)-7])
 
-    return URLsFromThisSitemap
+    return urls_from_this_sitemap
 
 
-def deduplicate_URLs(cleanedURLs):
+def deduplicate_urls(cleaned_urls):
     """Simple deduplication via conversion to a set, with user feedback"""
-    lengthBefore = len(cleanedURLs)
+    lengthBefore = len(cleaned_urls)
     print("Deduplicating output...", end=" ")
-    cleanedURLs = set(cleanedURLs) # fast but unsorted deduplication
-    print(f"removed {lengthBefore-len(cleanedURLs)} URLs via deduplication.")
-    return cleanedURLs
+    cleaned_urls = set(cleaned_urls) # fast but unsorted deduplication
+    print(f"removed {lengthBefore-len(cleaned_urls)} URLs via deduplication.")
+    return cleaned_urls
 
 
-def output_URLs(cleanedURLs, filename):
+def output_urls(cleaned_urls, filename):
     """Writing the output to a file"""
     if not filename.endswith(".xlsx"):
         # Because our data is single-column, CSV is actually the 
@@ -87,17 +87,20 @@ def output_URLs(cleanedURLs, filename):
         # as the user doesn't want Excel, we can just do a standard
         # file write.  
         with open(filename, "w+") as g:
-            g.write("\n".join(cleanedURLs))
+            g.write("\n".join(cleaned_urls))
     else: 
         # Excel limits worksheets to 65,530 URLs. We can get around 
         # this, if necessary, by turning off string to URL conversions.
-        if len(cleanedURLs) > 65530: 
+        if len(cleaned_urls) > 65530: 
             workbook = xlsxwriter.Workbook(filename, {'strings_to_urls': False})
         else:
             workbook = xlsxwriter.Workbook(filename, {'strings_to_urls': True})
         worksheet = workbook.add_worksheet()
 
-        # Writing one URL per row using enumerate() for row numbers
-        for row_num, data in enumerate(cleanedURLs):
-            worksheet.write(row_num, 0, data)
+        # Writing one URL per row using enumerate() for row numbers.
+        # Also filters out any data that begins with "=" in order to
+        # prevent exploitation of a known Excel vulnerability.
+        for row_num, data in enumerate(cleaned_urls):
+            if not data.startswith("="): 
+                worksheet.write(row_num, 0, data)
         workbook.close()
