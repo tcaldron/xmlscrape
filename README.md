@@ -20,11 +20,13 @@ pip install -r requirements.txt
 
 ## Usage
 
+You can run the script with a simple "python3 xmlscrape.py" in the terminal. All arguments are optional, but provide useful functionality: 
+
 ```bash
 python3 xmlscrape.py # simplest usage, outputs to "output.txt" by default
-python3 xmlscrape.py --o scraped_urls.xlsx #outputs the extracted URLs to an Excel file
-python3 xmlscrape.py --o scraped_urls.txt --deduplicate --sort #it can also dedupe and sort before output
-python3 xmlscrape.py --ignore_index #you can add this argument in order to ignore sitemap index files
+python3 xmlscrape.py --o scraped_urls.xlsx # outputs the extracted URLs to an Excel file
+python3 xmlscrape.py --deduplicate --sort # it can also dedupe and sort before output
+python3 xmlscrape.py --ignore_index # you can add this argument in order to ignore sitemap index files
 ```
 
 Some notes:
