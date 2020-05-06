@@ -6,6 +6,8 @@ This is typically useful for SEO analysts that need to work with very large site
 
 It can output URLs to a file which you specify, with support for Excel (.xlsx), comma-separated values (.csv), and plain text (.txt). It includes options for deduplication, ignoring of index files, and sorting alphanumerically.
 
+Many thanks to the team at Climb (<www.climbmarketing.com>) for the support in developing this and our other tools.  
+
 ## Installation
 
 Installation (and the instructions for it) have been kept as simple and plain English as possible in order to support SEOs that are newer to Python and GitHub.
