@@ -2,7 +2,7 @@
 
 This Python 3 script extracts URLs from all XML sitemaps contained in the current directory and exports in a variety of formats.
 
-This is typically useful for SEO analysts that need to work with very large sitemaps, which can range into the millions of URLs. Because XML sitemaps should be limited to 50,000 URLs each, very large websites might have a ton of XML sitemap files, and concatenating the URLs from them is a chore. Exporting to a list allows easier crawling or analysis with SEO-specific tools like Screaming Frog or data science applications.
+This is typically useful for SEO analysts that need to work with very large sitemaps, which can range into the millions of URLs. Because XML sitemaps should be limited to 50,000 URLs each, very large websites might have a ton of XML sitemap files, and concatenating the URLs from them is a chore. Exporting to a single list allows easier crawling or analysis with SEO-specific tools like Screaming Frog or data science applications.
 
 It can output URLs to a file which you specify, with support for Excel (.xlsx), comma-separated values (.csv), and plain text (.txt). It includes options for deduplication, ignoring of index files, and sorting alphanumerically.
 
