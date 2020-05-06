@@ -6,7 +6,7 @@ This is typically useful for SEO analysts that need to work with very large site
 
 It can output URLs to a file which you specify, with support for Excel (.xlsx), comma-separated values (.csv), and plain text (.txt). It includes options for deduplication, ignoring of index files, and sorting alphanumerically.
 
-Many thanks to the team at Climb (<www.climbmarketing.com>) for the support in developing this and our other tools.  
+Many thanks to the team at [Climb](https://www.climbmarketing.com) for the support in developing this and our other tools.  
 
 ## Installation
 
