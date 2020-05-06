@@ -1,0 +1,5 @@
+argparse
+progress
+lxml
+bs4
+xlsxwriter
