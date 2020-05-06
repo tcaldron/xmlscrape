@@ -20,7 +20,7 @@ def main():
     bar = ShadyBar("Processing:", max=numberOfSitemaps, 
     suffix="%(index)d XML Sitemaps Processed") 
 
-    # We set up an empty list to fill via our processSitemap function.
+    # We set up an empty list to fill via our process_sitemap function.
     cleaned_urls = [] 
 
     # This is the meat of the application. We open up each sitemap
