@@ -8,11 +8,11 @@ It can output URLs to a file which you specify, with support for Excel (.xlsx), 
 
 ## Installation
 
-Installation (and the instructions for it) have been kept as simple and plain English as possible in order to support SEOs that are newer to Python and github.
+Installation (and the instructions for it) have been kept as simple and plain English as possible in order to support SEOs that are newer to Python and GitHub.
 
 Start out by making sure you have Python 3 installed. If you want to check, open up a terminal window on your computer and type "python3 --version." If it says Python 3.6 or higher, you're good to go. If not, go here: <https://www.python.org/downloads/>
 
-Click the green button on the upper right and download the zip file. Then open a terminal in the same directory (on a Mac, you can right click the folder and look through the options for "New Terminal at Folder") and run:
+Click the green button on this page (on the upper right) and download the zip file. Then open a terminal in the same directory as the zip file's contents (on a Mac, you can right click the folder and look through the options for "New Terminal at Folder") and run:
 
 ```bash
 pip install -r requirements.txt
